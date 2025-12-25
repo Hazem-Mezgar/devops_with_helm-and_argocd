@@ -1,0 +1,10 @@
+replicaCount: 1              ✅ 1 instance MongoDB (suffisant pour le TP)
+image:
+  repository: mongo          ✅ Image officielle MongoDB
+  tag: latest                ✅ Dernière version
+  pullPolicy: IfNotPresent   ✅ Télécharge si pas déjà présent
+service: 
+  type: ClusterIP            ✅ Accessible seulement DANS le cluster
+  port: 27017                ✅ Port standard MongoDB
+ingress:
+  enabled:  false             ✅ Pas besoin d'accès externe pour la BDD

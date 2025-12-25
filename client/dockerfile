@@ -1,0 +1,30 @@
+# Use Node.js LTS Alpine version as base image
+FROM node:lts-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock. json
+COPY package*.json ./
+
+# Install all dependencies
+RUN npm install
+
+# Copy all the client source code
+COPY . .
+
+# Build the React application for production
+# This creates an optimized build in the /app/build folder
+RUN npm run build
+
+# Install 'serve' - a lightweight HTTP server to serve static files
+# -g flag installs it globally
+RUN npm install -g serve
+
+# Expose port 3000 for the application
+EXPOSE 3000
+
+# Start the server to serve the build folder
+# -s flag enables Single Page Application mode (handles routing)
+# -l 3000 specifies the port
+CMD ["serve", "-s", "build", "-l", "3000"]
