@@ -1,13 +1,20 @@
 replicaCount: 1
+
 image:
   repository: mongo
   tag: latest
   pullPolicy: IfNotPresent
-service: 
+
+service:
   type: ClusterIP
   port: 27017
+
 ingress:
-  enabled:  false
+  enabled: false
+
 serviceAccount:
   create: true
   name: ""
+
+httpRoute:
+  enabled: false
