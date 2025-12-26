@@ -8,3 +8,6 @@ service:
   port: 27017
 ingress:
   enabled:  false
+serviceAccount:
+  create: true
+  name: ""
